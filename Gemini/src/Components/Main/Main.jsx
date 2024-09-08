@@ -14,6 +14,14 @@ const Main = () => {
     input,
   } = useContext(Context);
 
+  const sendInfo = (data) => {
+    setInput(data);
+  };
+  const handleCardClick = (e) => {
+    const cardText = e.currentTarget.querySelector("p").innerText;
+    sendInfo(cardText);
+  };
+
   return (
     <div className="main">
       <div className="nav">
@@ -30,19 +38,19 @@ const Main = () => {
               <p>How can I help you today ?</p>
             </div>
             <div className="cards">
-              <div className="card">
+              <div onClick={handleCardClick} className="card">
                 <p>Suggest beautiful places to see in Delhi ?</p>
                 <img src={assets.compass_icon}></img>
               </div>
-              <div className="card">
+              <div onClick={handleCardClick} className="card">
                 <p>Briefly summarize this concept : Dynamic Programming</p>
                 <img src={assets.bulb_icon}></img>
               </div>
-              <div className="card">
+              <div onClick={handleCardClick} className="card">
                 <p>Brainstorm team bonding activities for our work retreat</p>
                 <img src={assets.message_icon}></img>
               </div>
-              <div className="card">
+              <div onClick={handleCardClick} className="card">
                 <p>What are the ways to improve Coding skills</p>
                 <img src={assets.code_icon}></img>
               </div>
