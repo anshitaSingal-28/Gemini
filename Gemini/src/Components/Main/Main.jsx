@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "./Main.css";
 import { assets } from "../../assets/assets";
 import { Context } from "../../context/Context";
+import { UserButton, useUser } from "@clerk/clerk-react";
 
 const Main = () => {
   const {
@@ -22,18 +23,19 @@ const Main = () => {
     sendInfo(cardText);
   };
 
+  const { user } = useUser();
   return (
     <div className="main">
       <div className="nav">
         <p>Gemini</p>
-        <img src={assets.girl}></img>
+        <UserButton />
       </div>
       <div className="main-container">
         {!showResult ? (
           <>
             <div className="greet">
               <p>
-                <span>Hello , Anshita</span>
+                <span>Hello {user ? user.firstName : "Guest"} ,</span>
               </p>
               <p>How can I help you today ?</p>
             </div>
