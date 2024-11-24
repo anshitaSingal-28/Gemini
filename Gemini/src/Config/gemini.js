@@ -1,4 +1,3 @@
-
 // const apiKey ='AIzaSyDFtVCYTStVigGQBIqaE96J82YEfBq8lEg'
 
 // const apiKey = process.env.GEMINI_API_KEY;
@@ -12,9 +11,9 @@ import {
   GoogleGenerativeAI,
   HarmCategory,
   HarmBlockThreshold,
-} from "@google/generative-ai" ;
+} from "@google/generative-ai";
 
-const apiKey ='AIzaSyDFtVCYTStVigGQBIqaE96J82YEfBq8lEg';
+const apiKey = "AIzaSyDFtVCYTStVigGQBIqaE96J82YEfBq8lEg";
 const genAI = new GoogleGenerativeAI(apiKey);
 
 const model = genAI.getGenerativeModel({
@@ -24,7 +23,7 @@ const model = genAI.getGenerativeModel({
 const generationConfig = {
   temperature: 1,
   topP: 0.95,
-  topK: 64,
+  topK: 40,
   maxOutputTokens: 8192,
   responseMimeType: "text/plain",
 };
@@ -32,10 +31,9 @@ const generationConfig = {
 async function run(prompt) {
   const chatSession = model.startChat({
     generationConfig,
- // safetySettings: Adjust safety settings
- // See https://ai.google.dev/gemini-api/docs/safety-settings
-    history: [
-    ],
+    // safetySettings: Adjust safety settings
+    // See https://ai.google.dev/gemini-api/docs/safety-settings
+    history: [],
   });
 
   const result = await chatSession.sendMessage(prompt);
@@ -43,4 +41,4 @@ async function run(prompt) {
   return result.response.text();
 }
 
-export default run ;
+export default run;

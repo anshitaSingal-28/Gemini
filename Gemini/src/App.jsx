@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "./Components/sidebar/sidebar";
+import Sidebar from "./Components/sidebar/Sidebar";
 import Main from "./Components/Main/Main";
 import { Navigate } from "react-router-dom";
 import { useUser } from "@clerk/clerk-react";
